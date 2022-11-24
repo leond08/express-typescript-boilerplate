@@ -107,6 +107,15 @@ const responseData = {
   ...postData,
 }
 
+expect.extend({
+  toBeValid(isValid, errorMessage) {
+    return {
+      message: () => (isValid ? '' : errorMessage),
+      pass: isValid,
+    }
+  },
+})
+
 describe('Contract Testing', () => {
   beforeAll(() => {
     // mock service
@@ -126,8 +135,7 @@ describe('Contract Testing', () => {
             contract.components.schemas.UserSchemaResponse,
             response.data
           )
-
-          expect(valid).toBeTruthy
+          expect(valid).toBeValid(errorMessage(ajv.errors))
           done()
         })
         .catch((error) => {
@@ -143,7 +151,7 @@ describe('Contract Testing', () => {
             contract.components.schemas.UserSchemaResponse,
             response.data
           )
-          expect(valid).toBeTruthy
+          expect(valid).toBeValid(errorMessage(ajv.errors))
           done()
         })
         .catch((error) => {
