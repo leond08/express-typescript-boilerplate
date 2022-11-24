@@ -10,7 +10,7 @@ class Kernel {
     express = Log.init(express)
     express = Http.init(express)
     express = Cors.init(express)
-    express = Helmet.init(express)
+    express = Helmet.init({ express })
     express.use(Validation.init)
 
     return express

@@ -1,10 +1,12 @@
 {
   "extends": [
     "eslint:recommended", 
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:sonarjs/recommended",
+    "plugin:security/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "sonarjs"],
   "root": true,
   "ignorePatterns": ["dist/**/*.js"],
   "rules": {

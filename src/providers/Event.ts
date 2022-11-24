@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import EventEmitter from 'events'
 import SampleListener from '../listeners/SampleListener'
 import SampleEvent from '../events/SampleEvent'

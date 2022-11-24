@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AnyObjectSchema } from 'yup'
 
 // to make the file a module and avoid the TypeScript error

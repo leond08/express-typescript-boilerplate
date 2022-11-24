@@ -7,6 +7,7 @@ class Server {
   private server: http.Server = http.createServer()
   private port: number = Config.config().port
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private onError(error: any) {
     if (error.syscall !== 'listen') {
       throw error

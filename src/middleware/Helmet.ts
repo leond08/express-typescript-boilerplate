@@ -2,7 +2,7 @@ import { Application } from 'express'
 import helmet, { HelmetOptions } from 'helmet'
 
 class Helmet {
-  public init(express: Application): Application {
+  public init({ express }: { express: Application }): Application {
     const options: HelmetOptions = {}
 
     express.use(helmet(options))

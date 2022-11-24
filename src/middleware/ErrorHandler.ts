@@ -9,7 +9,7 @@ class ErrorHandler {
     res: Response,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     next: NextFunction
-  ) {
+  ): void {
     // render the error
     if (err instanceof BaseError) {
       res.status(err.code).send(err.response())
