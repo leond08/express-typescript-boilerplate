@@ -1,5 +1,6 @@
 import { Application } from 'express'
 import http from 'http'
+import Logger from '../utils/Logger'
 import Config from './Config'
 
 class Server {
@@ -14,11 +15,11 @@ class Server {
     // handle specific listen errors with friendly messages
     switch (error.code) {
       case 'EACCES':
-        console.error(this.port + ' requires elevated privileges')
+        Logger.error(this.port + ' requires elevated privileges')
         process.exit(1)
         break
       case 'EADDRINUSE':
-        console.error(this.port + ' is already in use')
+        Logger.error(this.port + ' is already in use')
         process.exit(1)
         break
       default:
@@ -31,7 +32,7 @@ class Server {
     this.server.listen(this.port)
     this.server.on('error', this.onError)
     this.server.on('listening', () =>
-      console.log('Listening on port ' + this.port)
+      Logger.info(`Listening on port ${this.port}`)
     )
   }
 }

@@ -1,9 +1,7 @@
 import nock from 'nock'
 import Ajv from 'ajv'
 import axios from 'axios'
-import { expect } from 'chai'
-import { errorMessage } from './helper'
-
+import { errorMessage } from '../helper'
 const ajv = new Ajv()
 const contract = {
   openapi: '3.0.0',
@@ -26,13 +24,7 @@ const contract = {
         type: 'object',
         required: ['name', 'email'],
         properties: {
-          name: {
-            type: 'object',
-            properties: {
-              firstname: 'string',
-              lastname: 'string',
-            },
-          },
+          name: { type: 'string' },
           email: { type: 'string' },
           createdAt: { type: 'string' },
           updateAt: { type: 'string' },
@@ -116,7 +108,7 @@ const responseData = {
 }
 
 describe('Contract Testing', () => {
-  before(() => {
+  beforeAll(() => {
     // mock service
     nock('http://localhost:3002')
       .post('/api/users', postData)
@@ -126,7 +118,7 @@ describe('Contract Testing', () => {
   })
 
   describe('Register User', () => {
-    it('it should register user', (done) => {
+    test('it should register user', (done) => {
       axios
         .post('http://localhost:3002/api/users', postData)
         .then((response) => {
@@ -135,7 +127,7 @@ describe('Contract Testing', () => {
             response.data
           )
 
-          expect(valid, errorMessage(ajv.errors)).to.equal(true)
+          expect(valid).toBeTruthy
           done()
         })
         .catch((error) => {
@@ -143,7 +135,7 @@ describe('Contract Testing', () => {
         })
     })
 
-    it('it should get user by id', (done) => {
+    test('it should get user by id', (done) => {
       axios
         .get('http://localhost:3002/api/users/1')
         .then((response) => {
@@ -151,7 +143,7 @@ describe('Contract Testing', () => {
             contract.components.schemas.UserSchemaResponse,
             response.data
           )
-          expect(valid, 'invalid response object').to.equal(true)
+          expect(valid).toBeTruthy
           done()
         })
         .catch((error) => {
