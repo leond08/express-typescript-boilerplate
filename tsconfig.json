@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "target": "ES6",
+    "module": "commonjs",
+    "outDir": "dist/",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true
+  },
+  "exclude": [
+    "src/types/*.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
+  ]
+}
