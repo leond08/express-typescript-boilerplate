@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Application, NextFunction, Request, Response } from 'express'
 import { IError } from '../types/local'
 import { BaseError } from '../utils/Error'
@@ -7,8 +8,7 @@ class ErrorHandler {
     err: IError,
     req: Request,
     res: Response,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    next: NextFunction
+    next: NextFunction,
   ): void {
     // render the error
     if (err instanceof BaseError) {

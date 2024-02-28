@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-fallthrough */
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 import { Application } from 'express'
 import http from 'http'
 import Logger from '../utils/Logger'
@@ -7,7 +10,6 @@ class Server {
   private server: http.Server = http.createServer()
   private port: number = Config.config().port
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private onError(error: any) {
     if (error.syscall !== 'listen') {
       throw error
@@ -18,11 +20,9 @@ class Server {
       case 'EACCES':
         Logger.error(this.port + ' requires elevated privileges')
         process.exit(1)
-        break
       case 'EADDRINUSE':
         Logger.error(this.port + ' is already in use')
         process.exit(1)
-        break
       default:
         throw error
     }
